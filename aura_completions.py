@@ -20,26 +20,30 @@ def get_tag_to_attributes():
 
 class AuraTagCompletions(sublime_plugin.EventListener):
 
-
+    # Constructor
+    # Generates list of aura tags and tag to attributes dictionary
     def __init__(self):  
-        completion_list = self.default_completion_list()
-        self.prefix_completion_dict = {}
-        # construct a dictionary where the key is first character of
-        # the completion list to the completion
-        for s in completion_list:
-            prefix = s[0][0]
-            self.prefix_completion_dict.setdefault(prefix, []).append(s)
+        self.prefix_completion_dict = self.default_completion_list()
+        self.tag_to_attributes = aura_tags.tag_dict
 
-        # construct a dictionary from (tag, attribute[0]) -> [attribute]
-        self.tag_to_attributes = get_tag_to_attributes()
+    def default_completion_list(self):
+        default_list = []
+        normal_tags = aura_tags.tag_dict.keys()
+
+        for tag in normal_tags:
+            default_list.append(make_completion(tag))
+            default_list.append(make_completion(tag.upper()))
+
+
+        prefix_completion_dict = {}
+
+        for s in default_list:
+            prefix = s[0][0]
+            prefix_completion_dict.setdefault(prefix, []).append(s)
+
+        return prefix_completion_dict
 
     def on_query_completions(self, view, prefix, locations):
-        # Only trigger within HTML
-        
-        # if view.match_selector(locations[0], "text.html meta.tag meta.attribute-with-value.html string.quoted.double.html punctuation.definition.string.end.html"):
-        #     self.expand_tag_attributes(view, locations)
-        #     return ([('public', 'public'),('private\tString', 'private'), ('global','global')], sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS)
-
         print("prefix:", prefix)
         if not view.match_selector(locations[0], "text.html - source - string.quoted"):
             return []
@@ -85,22 +89,8 @@ class AuraTagCompletions(sublime_plugin.EventListener):
 
         return (completion_list, flags)
 
-    def default_completion_list(self):
-        default_list = []
-        normal_tags = aura_tags.tag_dict.keys()
 
-        for tag in normal_tags:
-            default_list.append(make_completion(tag))
-            default_list.append(make_completion(tag.upper()))
 
-        return default_list
-
-    # This responds to on_query_completions, but conceptually it's expanding
-    # expressions, rather than completing words.
-    #
-    # It expands these simple expressions:
-    # tag.class
-    # tag#id
     def expand_tag_attributes(self, view, locations):
         # Get the contents of each line, from the beginning of the line to
         # each point
