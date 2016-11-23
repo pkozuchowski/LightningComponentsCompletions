@@ -19,10 +19,8 @@ def get_tag_to_attributes():
 
 
 class AuraTagCompletions(sublime_plugin.EventListener):
-    """
-    Provide tag completions for HTML
-    It matches just after typing the first letter of a tag name
-    """
+
+
     def __init__(self):  
         completion_list = self.default_completion_list()
         self.prefix_completion_dict = {}
@@ -62,10 +60,6 @@ class AuraTagCompletions(sublime_plugin.EventListener):
             ch = '<'
 
 
-        print('prefix:', prefix)
-        print("ch", ch)
-        print('is_inside_tag', is_inside_tag)
-
         completion_list = []
         if is_inside_tag and ch != '<':
             if ch in [' ', '\t', '\n']:
@@ -92,11 +86,6 @@ class AuraTagCompletions(sublime_plugin.EventListener):
         return (completion_list, flags)
 
     def default_completion_list(self):
-        """
-        Generate a default completion list for HTML
-        """
-
-        # print('default_completion_list')
         default_list = []
         normal_tags = aura_tags.tag_dict.keys()
 
@@ -149,6 +138,7 @@ class AuraTagCompletions(sublime_plugin.EventListener):
         return tag
 
     def get_attribute_completions(self, view, pt, prefix):
+        print('get_attribute_completions')
         SEARCH_LIMIT = 500
         search_start = max(0, pt - SEARCH_LIMIT - len(prefix))
         line = view.substr(sublime.Region(search_start, pt + SEARCH_LIMIT))
@@ -197,111 +187,3 @@ class AuraTagCompletions(sublime_plugin.EventListener):
         # ("class\tAttr", "class="$1">"),
         attri_completions = [ (name + '\t' + type, name + '="${0:'+ type +'}"' + suffix) for name,type in attributes.items()]
         return attri_completions
-
-
-# unit testing
-# to run it in sublime text:
-# import HTML.html_completions
-# HTML.html_completions.Unittest.run()
-
-import unittest
-
-class Unittest(unittest.TestCase):
-
-    class Sublime:
-        INHIBIT_WORD_COMPLETIONS = 1
-        INHIBIT_EXPLICIT_COMPLETIONS = 2
-
-    # this view contains a hard coded one line super simple HTML fragment
-    class View:
-        def __init__(self):
-            self.buf = '<tr><td class="a">td.class</td></tr>'
-
-        def line(self, pt):
-            # only ever 1 line
-            return sublime.Region(0, len(self.buf))
-
-        def substr(self, region):
-            return self.buf[region.a : region.b]
-
-    def run():
-        # redefine the modules to use the mock version
-        global sublime
-
-        sublime_module = sublime
-        # use the normal region
-        Unittest.Sublime.Region = sublime.Region
-        sublime = Unittest.Sublime
-
-        test = Unittest()
-        test.test_simple_completion()
-        test.test_inside_tag_completion()
-        test.test_inside_tag_no_completion()
-        test.test_expand_tag_attributes()
-
-        # set it back after testing
-        sublime = sublime_module
-
-    # def get_completions(self, view, prefix, locations, is_inside_tag):
-    def test_simple_completion(self):
-        # <tr><td class="a">td.class</td></tr>
-        view = Unittest.View()
-        completor = HtmlTagCompletions()
-
-        # simulate typing 'tab' at the start of the line, it is outside a tag
-        completion_list, flags = completor.get_completions(view, 'tab', [0], False)
-
-        # should give a bunch of tags that starts with t
-        self.assertEqual(completion_list[0], ('table\tTag', '<table>$0</table>'))
-        self.assertEqual(completion_list[1], ('tbody\tTag', '<tbody>$0</tbody>'))
-        # don't suppress word based completion
-        self.assertEqual(flags, 0)
-
-    def test_inside_tag_completion(self):
-        # <tr><td class="a">td.class</td></tr>
-        view = Unittest.View()
-        completor = HtmlTagCompletions()
-
-        # simulate typing 'h' after <tr><, i.e. <tr><h
-        completion_list, flags = completor.get_completions(view, 'h', [6], True)
-
-        # should give a bunch of tags that starts with h, and without <
-        self.assertEqual(completion_list[0], ('head\tTag', 'head>$0</head>'))
-        self.assertEqual(completion_list[1], ('header\tTag', 'header>$0</header>'))
-        self.assertEqual(completion_list[2], ('h1\tTag', 'h1>$0</h1>'))
-        # suppress word based completion
-        self.assertEqual(flags, sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS)
-
-        # simulate typing 'he' after <tr><, i.e. <tr><he
-        completion_list, flags = completor.get_completions(view, 'he', [7], True)
-
-        # should give a bunch of tags that starts with h, and without < (it filters only on the first letter of the prefix)
-        self.assertEqual(completion_list[0], ('head\tTag', 'head>$0</head>'))
-        self.assertEqual(completion_list[1], ('header\tTag', 'header>$0</header>'))
-        self.assertEqual(completion_list[2], ('h1\tTag', 'h1>$0</h1>'))
-        # suppress word based completion
-        self.assertEqual(flags, sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS)
-
-    def test_inside_tag_no_completion(self):
-        # <tr><td class="a">td.class</td></tr>
-        view = Unittest.View()
-        completor = HtmlTagCompletions()
-
-        # simulate typing 'h' after <tr><td , i.e. <tr><td h
-        completion_list, flags = completor.get_completions(view, 'h', [8], True)
-
-        # should give nothing, but disable word based completions, since it is inside a tag
-        self.assertEqual(completion_list, [])
-        self.assertEqual(flags, sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS)
-
-    def test_expand_tag_attributes(self):
-        # <tr><td class="a">td.class</td></tr>
-        view = Unittest.View()
-        completor = HtmlTagCompletions()
-
-        # simulate typing tab after td.class
-        completion_list, flags = completor.get_completions(view, '', [26], False)
-
-        # should give just one completion, and suppress word based completion
-        self.assertEqual(completion_list, [('td.class', '<td class="class">$1</td>$0')])
-        self.assertEqual(flags, sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS)
