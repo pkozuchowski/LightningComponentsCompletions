@@ -94,8 +94,6 @@ def get_tag_to_attributes():
 
         'aura:renderif' : {'isTrue':'Boolean'},
 
-        'aura:attribute' : {'value':'String'},
-
         'aura:unescapedHtml' : {'value':'String'},
 
         'auraStorage:init' : {
@@ -268,7 +266,7 @@ def get_tag_to_attributes():
                     'max':'Decimal',
                     'maxLength':'Integer',
                     'messageWhenBadInput':'String',
-                    'messageWhenPatternMismatch':'String'
+                    'messageWhenPatternMismatch':'String',
                     'messageWhenRangeOverflow':'String',
                     'messageWhenRangeUnderflow':'String',
                     'messageWhenStepMismatch':'String',
@@ -328,7 +326,7 @@ def get_tag_to_attributes():
                     'accesskey':'String',
                     'class':'String', 
                     'disabled':'Boolean',
-                    'label':'String'
+                    'label':'String',
                     'messageWhenValueMissing':'String',
                     'name':'String',
                     'onblur':'Action',
@@ -353,7 +351,7 @@ def get_tag_to_attributes():
                     'tabindex':'Integer',
                     'title':'String'},
 
-        'lightning:select' : {
+        'lightning:tabset' : {
                     'class':'String', 
                     'onselect':'Action',
                     'selectedTabid':'String',
@@ -870,7 +868,7 @@ def get_tag_to_attributes():
 
         'ui:inputTextArea' : {
                     'class':'String',
-                    'cols':'Integer'
+                    'cols':'Integer',
                     'disabled':'Boolean',
                     'errors':'List',
                     'label':'String',
@@ -1160,17 +1158,6 @@ def get_tag_to_attributes():
                     'mousedown':'COMPONENT',
                     'click':'COMPONENT'},
 
-        'ui:outputNumber' : {
-                    'class':'String',
-                    'value':'String',
-                    'dblclick':'COMPONENT',
-                    'mouseover':'COMPONENT',
-                    'mouseout':'COMPONENT',
-                    'mouseup':'COMPONENT',
-                    'mousemove':'COMPONENT',
-                    'mousedown':'COMPONENT',
-                    'click':'COMPONENT'},
-
         'ui:outputTextArea' : {
                     'class':'String',
                     'linkify':'Boolean',
@@ -1199,27 +1186,6 @@ def get_tag_to_attributes():
                     'mousemove':'COMPONENT',
                     'mousedown':'COMPONENT',
                     'click':'COMPONENT'},
-
-        'ui:outputRichText' : {
-                    'class':'String',
-                    'disabled':'Boolean',
-                    'hideMenuAfterSelected':'Boolean',
-                    'label':'String',
-                    'selected':'Boolean',
-                    'type':'String',
-                    'dblclick':'COMPONENT',
-                    'mouseover':'COMPONENT',
-                    'mouseout':'COMPONENT',
-                    'mouseup':'COMPONENT',
-                    'mousemove':'COMPONENT',
-                    'mousedown':'COMPONENT',
-                    'click':'COMPONENT',
-                    'select':'COMPONENT',
-                    'blur':'COMPONENT',
-                    'focus':'COMPONENT',
-                    'keypress':'COMPONENT',
-                    'keyup':'COMPONENT',
-                    'keydown':'COMPONENT'},
 
         'ui:scrollerWrapper' : {'class':'String'},
 
@@ -1323,7 +1289,6 @@ class AuraTagCompletions(sublime_plugin.EventListener):
             'aura:registerEvent',
             'aura:event',
             'aura:handler',
-            'ui:actionMenuItem',
             'aura:component',
             'aura:dependency',
             'aura:interface',
@@ -1331,7 +1296,6 @@ class AuraTagCompletions(sublime_plugin.EventListener):
             'aura:expression',
             'aura:html',
             'aura:renderif',
-            'aura:attribute',
             'aura:unescapedHtml',
             'auraStorage:init',
             'force:canvasApp',
@@ -1358,7 +1322,7 @@ class AuraTagCompletions(sublime_plugin.EventListener):
             'lightning:select',
             'lightning:spinner',
             'lightning:tab',
-            'lightning:select',
+            'lightning:tabset',
             'lightning:textarea',
             'ltng:require',
             'ui:actionMenuItem',
@@ -1396,10 +1360,8 @@ class AuraTagCompletions(sublime_plugin.EventListener):
             'ui:outputPhone',
             'ui:outputRichText',
             'ui:outputText',
-            'ui:outputNumber',
             'ui:outputTextArea',
             'ui:outputURL',
-            'ui:outputRichText',
             'ui:scrollerWrapper',
             'ui:spinner'
         ])
