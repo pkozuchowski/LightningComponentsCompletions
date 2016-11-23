@@ -1,6 +1,6 @@
 import sublime, sublime_plugin
 import re
-import aura_completions.aura_tags as aura_tags
+from LightningComponentsCompletions.aura_tags import tag_dict as aura_tags
 
 def match(rex, str):
     m = rex.match(str)
@@ -15,7 +15,7 @@ def make_completion(tag):
     return (tag + '\tTag', tag + ' $0 ></' + tag + '>')
 
 def get_tag_to_attributes():
-    return aura_tags.tag_dict
+    return aura_tags
 
 
 class AuraTagCompletions(sublime_plugin.EventListener):
@@ -24,11 +24,11 @@ class AuraTagCompletions(sublime_plugin.EventListener):
     # Generates list of aura tags and tag to attributes dictionary
     def __init__(self):  
         self.prefix_completion_dict = self.default_completion_list()
-        self.tag_to_attributes = aura_tags.tag_dict
+        self.tag_to_attributes = aura_tags
 
     def default_completion_list(self):
         default_list = []
-        normal_tags = aura_tags.tag_dict.keys()
+        normal_tags = aura_tags.keys()
 
         for tag in normal_tags:
             default_list.append(make_completion(tag))
