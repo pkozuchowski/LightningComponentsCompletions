@@ -1,0 +1,10 @@
+{
+	"extensions":
+	[
+		"cmp",
+		"evt",
+		"app",
+		"auradoc",
+		"design"
+	]
+}
