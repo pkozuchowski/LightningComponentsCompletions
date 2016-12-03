@@ -45,6 +45,7 @@ class AuraTagCompletions(sublime_plugin.EventListener):
         return prefix_completion_dict
 
     def on_query_completions(self, view, prefix, locations):
+
         if not (
                 view.match_selector(locations[0], "text.html - source - string.quoted")
                 or 
@@ -116,7 +117,6 @@ class AuraTagCompletions(sublime_plugin.EventListener):
         return tag
 
     def get_attribute_completions(self, view, pt, prefix):
-        print('get_attribute_completions')
         SEARCH_LIMIT = 500
         search_start = max(0, pt - SEARCH_LIMIT - len(prefix))
         line = view.substr(sublime.Region(search_start, pt + SEARCH_LIMIT))
