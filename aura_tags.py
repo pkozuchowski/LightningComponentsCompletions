@@ -12,7 +12,8 @@ tag_dict = {
          "type":"String"
       },
       "value":{
-         "type":"Object"
+         "type":"Object",
+         "required": True
       },
       "timeZone":{
          "type":"String"
@@ -136,7 +137,8 @@ tag_dict = {
          "type":"Boolean"
       },
       "name":{
-         "type":"String"
+         "type":"String",
+         "required": True
       }
    },
    "lightning:tabset":{
@@ -285,7 +287,8 @@ tag_dict = {
          "type":"String"
       },
       "name":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "checked":{
          "type":"Boolean"
@@ -309,7 +312,8 @@ tag_dict = {
          "type":"Boolean"
       },
       "label":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "messageWhenRangeOverflow":{
          "type":"String"
@@ -562,7 +566,8 @@ tag_dict = {
          "type":"COMPONENT"
       },
       "value":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "click":{
          "type":"COMPONENT"
@@ -585,7 +590,8 @@ tag_dict = {
          "type":"COMPONENT"
       },
       "value":{
-         "type":"BigDecimal"
+         "type":"BigDecimal",
+         "required": True
       },
       "currencySymbol":{
          "type":"String"
@@ -803,7 +809,8 @@ tag_dict = {
          "type":"COMPONENT"
       },
       "value":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "langLocale":{
          "type":"String"
@@ -829,7 +836,8 @@ tag_dict = {
    },
    "lightning:icon":{
       "iconName":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "class":{
          "type":"String"
@@ -875,7 +883,8 @@ tag_dict = {
          "type":"String"
       },
       "label":{
-         "type":"String"
+         "type":"String",
+         "required": True
       }
    },
    "ui:inputTextArea":{
@@ -1606,11 +1615,6 @@ tag_dict = {
          "type":"COMPONENT"
       }
    },
-   "aura:renderif":{
-      "isTrue":{
-         "type":"Boolean"
-      }
-   },
    "force:outputField":{
       "class":{
          "type":"String"
@@ -1624,7 +1628,8 @@ tag_dict = {
          "type":"String"
       },
       "alternativeText":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "value":{
          "type":"String"
@@ -1633,7 +1638,8 @@ tag_dict = {
          "type":"String"
       },
       "iconName":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "accesskey":{
          "type":"String"
@@ -1668,7 +1674,8 @@ tag_dict = {
          "type":"COMPONENT"
       },
       "value":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "timezone":{
          "type":"String"
@@ -1836,7 +1843,8 @@ tag_dict = {
          "type":"String"
       },
       "name":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "validity":{
          "type":"Object"
@@ -1857,7 +1865,8 @@ tag_dict = {
          "type":"Boolean"
       },
       "label":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "onblur":{
          "type":"Action"
@@ -1871,7 +1880,8 @@ tag_dict = {
          "type":"Component[]"
       },
       "title":{
-         "type":"Component[]"
+         "type":"Component[]",
+         "required": True
       },
       "iconName":{
          "type":"String"
@@ -2095,7 +2105,8 @@ tag_dict = {
          "type":"COMPONENT"
       },
       "value":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "title":{
          "type":"String"
@@ -2132,7 +2143,8 @@ tag_dict = {
          "type":"COMPONENT"
       },
       "value":{
-         "type":"BigDecimal"
+         "type":"BigDecimal",
+         "required": True
       },
       "format":{
          "type":"String"
@@ -2164,7 +2176,8 @@ tag_dict = {
          "type":"String"
       },
       "value":{
-         "type":"Boolean"
+         "type":"Boolean",
+         "required": True
       },
       "click":{
          "type":"COMPONENT"
@@ -2187,7 +2200,8 @@ tag_dict = {
    },
    "forceChatter:publisher":{
       "context":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "recordId":{
          "type":"String"
@@ -2687,7 +2701,8 @@ tag_dict = {
          "type":"COMPONENT"
       },
       "value":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "click":{
          "type":"COMPONENT"
@@ -2810,7 +2825,8 @@ tag_dict = {
    },
    "aura:if":{
       "isTrue":{
-         "type":"Boolean"
+         "type":"Boolean",
+         "required": True
       }
    },
    "ui:outputURL":{
@@ -3032,7 +3048,8 @@ tag_dict = {
          "type":"Integer"
       },
       "label":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "validity":{
          "type":"Object"
@@ -3059,7 +3076,8 @@ tag_dict = {
          "type":"Boolean"
       },
       "name":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "tabindex":{
          "type":"Integer"
@@ -3082,7 +3100,8 @@ tag_dict = {
          "type":"COMPONENT"
       },
       "value":{
-         "type":"String"
+         "type":"String",
+         "required": True
       },
       "click":{
          "type":"COMPONENT"
