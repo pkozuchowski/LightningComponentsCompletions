@@ -9,14 +9,18 @@ def match(rex, str):
     else:
         return None
 
-def make_completion(tag):
-    # make it look like
-    # ("table\tTag", "table>$1</table>"),
-    return (tag + '\tTag', tag + ' $0 ></' + tag + '>')
+def make_completion(tag, attributes):
+    def inc():
+        for i in range(1,100):
+            yield i
 
-def get_tag_to_attributes():
-    return aura_tags
+    i = inc()
+    required_attributes = [
+        '{}="${{{}:{}}}"'.format(attribute, next(i), traits.get("type")) 
+        for (attribute, traits) in attributes.items() 
+        if traits.get('required', False) == True];
 
+    return (tag + '\tTag', tag +' ' + ' '.join(required_attributes)+ ' ${} >${}</'.format(next(i), next(i)) + tag + '>')
 
 class AuraTagCompletions(sublime_plugin.EventListener):
 
@@ -28,12 +32,9 @@ class AuraTagCompletions(sublime_plugin.EventListener):
 
     def default_completion_list(self):
         default_list = []
-        normal_tags = aura_tags.keys()
 
-        for tag in normal_tags:
-            default_list.append(make_completion(tag))
-            default_list.append(make_completion(tag.upper()))
-
+        for tag, attributes in aura_tags.items():
+            default_list.append(make_completion(tag, attributes))
 
         prefix_completion_dict = {}
 
