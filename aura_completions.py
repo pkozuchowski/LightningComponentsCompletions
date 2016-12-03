@@ -22,7 +22,7 @@ def make_completion(tag, attributes):
 
     return (tag + '\tTag', tag +' ' + ' '.join(required_attributes)+ ' ${} >${}</'.format(next(i), next(i)) + tag + '>')
 
-class AuraTagCompletions(sublime_plugin.EventListener):
+class LightningComponentsCompletions(sublime_plugin.EventListener):
 
     # Constructor
     # Generates list of aura tags and tag to attributes dictionary
