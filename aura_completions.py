@@ -45,12 +45,19 @@ class AuraTagCompletions(sublime_plugin.EventListener):
         return prefix_completion_dict
 
     def on_query_completions(self, view, prefix, locations):
-        if not view.match_selector(locations[0], "text.html - source - string.quoted"):
+        if not (
+                view.match_selector(locations[0], "text.html - source - string.quoted")
+                or 
+                view.match_selector(locations[0], "text.xml - source - string.quoted")
+                ):
             return []
 
         # check if we are inside a tag
-        is_inside_tag = view.match_selector(locations[0],
-                "text.html meta.tag - text.html punctuation.definition.tag.begin")
+        is_inside_tag = (
+            view.match_selector(locations[0], "text.html meta.tag - text.html punctuation.definition.tag.begin")
+            or
+            view.match_selector(locations[0], "text.xml meta.tag - text.html punctuation.definition.tag.begin")
+            )
 
         return self.get_completions(view, prefix, locations, is_inside_tag)
 
