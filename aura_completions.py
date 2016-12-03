@@ -156,5 +156,5 @@ class AuraTagCompletions(sublime_plugin.EventListener):
         # got the tag, now find all attributes that match
         attributes = self.tag_to_attributes.get(tag, [])
         # ("class\tAttr", "class="$1">"),
-        attri_completions = [ (name + '\t' + type, name + '="${0:'+ type +'}"' + suffix) for name,type in attributes.items()]
+        attri_completions = [ (name + '\t' + values['type'], name + '="${1:'+ values['type'] +'}" $2' + suffix) for name,values in attributes.items()]
         return attri_completions
