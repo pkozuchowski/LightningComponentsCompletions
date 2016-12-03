@@ -44,7 +44,6 @@ class AuraTagCompletions(sublime_plugin.EventListener):
         return prefix_completion_dict
 
     def on_query_completions(self, view, prefix, locations):
-        print("prefix:", prefix)
         if not view.match_selector(locations[0], "text.html - source - string.quoted"):
             return []
 
@@ -55,27 +54,20 @@ class AuraTagCompletions(sublime_plugin.EventListener):
         return self.get_completions(view, prefix, locations, is_inside_tag)
 
     def get_completions(self, view, prefix, locations, is_inside_tag):
-        # see if it is in tag.attr or tag#attr format
+        prefix = self.expand_prefix(view, locations)
         pt = locations[0] - len(prefix) - 1
         ch = view.substr(sublime.Region(pt, pt + 1))
 
-        if ch == ':':
-            prefix = self.expand_tag_attributes(view, locations)
-            ch = '<'
-
 
         completion_list = []
-        if is_inside_tag and ch != '<':
-            if ch in [' ', '\t', '\n']:
-                # maybe trying to type an attribute
-                completion_list = self.get_attribute_completions(view, locations[0], prefix)
-            # only ever trigger completion inside a tag if the previous character is a <
-            # this is needed to stop completion from happening when typing attributes
-            return (completion_list, sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS)
+        flags = sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS
 
-        if prefix == '':
-            # need completion list to match
-            return ([], sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS)
+        if is_inside_tag and ch in [' ', '\t', '\n']:
+            completion_list = self.get_attribute_completions(view, locations[0], prefix)
+            return (completion_list, flags)
+
+        if prefix == []:
+            return ([], flags)
 
         # match completion list using prefix
         completion_list = self.prefix_completion_dict.get(prefix[0], [])
@@ -83,15 +75,10 @@ class AuraTagCompletions(sublime_plugin.EventListener):
         if ch != '<':
             completion_list = [(pair[0], '<' + pair[1]) for pair in completion_list]
 
-        flags = 0
-        if is_inside_tag:
-            flags = sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS
-
         return (completion_list, flags)
 
 
-
-    def expand_tag_attributes(self, view, locations):
+    def expand_prefix(self, view, locations):
         # Get the contents of each line, from the beginning of the line to
         # each point
         lines = [view.substr(sublime.Region(view.line(l).a, l))
@@ -107,12 +94,7 @@ class AuraTagCompletions(sublime_plugin.EventListener):
         rex = re.compile("([\w:]+)")
         expr = match(rex, lines[0])
 
-        # print("match:", rex.match(lines[0]) )
-        # print("search:", rex.findall(lines[0]) )
-
-
         if not expr:
-            # print("not expr")
             return []
 
         # Ensure that all other lines have identical expressions
@@ -123,8 +105,6 @@ class AuraTagCompletions(sublime_plugin.EventListener):
 
         # Return the completions
         tag = rex.match(expr).groups()[0][::-1]
-        # print("tag2:", tag)
-
         return tag
 
     def get_attribute_completions(self, view, pt, prefix):
