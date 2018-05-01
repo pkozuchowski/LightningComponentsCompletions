@@ -101,7 +101,16 @@ tag_dict = {
       "onfocus":{
          "type":"Action"
       },
+      "onactive":{
+         "type":"Action"
+      },
       "title":{
+         "type":"String"
+      },
+      "label":{
+         "type":"Component[]"
+      },
+      "class":{
          "type":"String"
       },
       "accesskey":{
@@ -141,6 +150,105 @@ tag_dict = {
          "required": True
       }
    },
+   "lightning:progressIndicator": {
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "currentStep":{
+         "type":"String"
+      },
+      "hasError":{
+         "type":"Boolean"
+      },
+      "type":{
+         "type":"String"
+      },
+      "variant":{
+         "type":"String"
+      }
+   },
+   "lightning:progressBar": {
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "size":{
+         "type":"String"
+      },
+      "value":{
+         "type":"Integer"
+      },
+      "variant":{
+         "type":"String"
+      }
+   },
+   "lightning:path": {
+      "onselect":{
+         "type":"Action"
+      },
+      "hideUpdateButton":{
+         "type":"Boolean"
+      },
+      "recordId":{
+         "type":"String"
+      },
+      "variant":{
+         "type":"String"
+      }
+   },
+   "lightning:picklistPath": {
+      "onselect":{
+         "type":"Action"
+      },
+      "picklistFieldApiName":{
+         "type":"String"
+      },
+      "recordId":{
+         "type":"String"
+      },
+      "variant":{
+         "type":"String"
+      }
+   },
+   "lightning:outputField": {
+      "class":{
+         "type":"String"
+      },
+      "fieldName":{
+         "type":"String",
+         "required": True
+      },
+      "variant":{
+         "type":"String"
+      }
+   },
+   "aura:text": {
+      "value":{
+         "type":"String"
+      }
+   },
+   "lightning:inputField": {
+      "body":{
+         "type":"COMPONENT"
+      },
+      "class":{
+         "type":"String"
+      },
+      "fieldName":{
+         "type":"String"
+      },
+      "value":{
+         "type":"String"
+      },
+      "onchange":{
+         "type":"Action"
+      }
+   },
    "lightning:tabset":{
       "variant":{
          "type":"String"
@@ -148,19 +256,31 @@ tag_dict = {
       "class":{
          "type":"String"
       },
-      "selectedTabid":{
+      "title":{
+         "type":"String"
+      },
+      "selectedTabId":{
          "type":"String"
       },
       "onselect":{
          "type":"Action"
       }
    },
-   "ui:inputRadio":{
+   "ui:radioMenuItem":{
       "class":{
          "type":"String"
       },
-      "onClearErrors":{
-         "type":"COMPONENT"
+      "type":{
+         "type":"String"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "hideMenuAfterSelected":{
+         "type":"Boolean"
+      },
+      "selected":{
+         "type":"Boolean"
       },
       "keyup":{
          "type":"COMPONENT"
@@ -171,26 +291,8 @@ tag_dict = {
       "mouseout":{
          "type":"COMPONENT"
       },
-      "value":{
-         "type":"Boolean"
-      },
       "focus":{
          "type":"COMPONENT"
-      },
-      "change":{
-         "type":"COMPONENT"
-      },
-      "requiredIndicatorClass":{
-         "type":"String"
-      },
-      "cut":{
-         "type":"COMPONENT"
-      },
-      "name":{
-         "type":"String"
-      },
-      "updateOn":{
-         "type":"String"
       },
       "dblclick":{
          "type":"COMPONENT"
@@ -201,32 +303,11 @@ tag_dict = {
       "keypress":{
          "type":"COMPONENT"
       },
-      "disabled":{
-         "type":"Boolean"
-      },
-      "text":{
-         "type":"String"
-      },
-      "onError":{
-         "type":"COMPONENT"
-      },
-      "errors":{
-         "type":"List"
-      },
-      "required":{
-         "type":"Boolean"
-      },
       "mousemove":{
          "type":"COMPONENT"
       },
-      "labelClass":{
-         "type":"String"
-      },
       "label":{
          "type":"String"
-      },
-      "paste":{
-         "type":"COMPONENT"
       },
       "keydown":{
          "type":"COMPONENT"
@@ -238,9 +319,6 @@ tag_dict = {
          "type":"COMPONENT"
       },
       "mousedown":{
-         "type":"COMPONENT"
-      },
-      "copy":{
          "type":"COMPONENT"
       },
       "blur":{
@@ -296,6 +374,9 @@ tag_dict = {
       "readonly":{
          "type":"Boolean"
       },
+      "multiple":{
+         "type":"Boolean"
+      },
       "onfocus":{
          "type":"Action"
       },
@@ -308,12 +389,27 @@ tag_dict = {
       "messageWhenBadInput":{
          "type":"String"
       },
+      "accept":{
+         "type":"String"
+      },
+      "messageToggleInactive":{
+         "type":"String"
+      },
+      "messageToggleActive":{
+         "type":"String"
+      },
       "disabled":{
+         "type":"Boolean"
+      },
+      "isLoading":{
          "type":"Boolean"
       },
       "label":{
          "type":"String",
          "required": True
+      },
+      "title":{
+         "type":"String"
       },
       "messageWhenRangeOverflow":{
          "type":"String"
@@ -336,6 +432,9 @@ tag_dict = {
       "step":{
          "type":"Object"
       },
+      "files":{
+         "type":"Object"
+      },
       "messageWhenTypeMismatch":{
          "type":"String"
       },
@@ -356,11 +455,14 @@ tag_dict = {
       },
       "tabindex":{
          "type":"Integer"
+      },
+      "variant":{
+         "type":"String"
       }
    },
    "lightning:layout":{
       "pullToBoundary":{
-         "type":"Boolean"
+         "type":"String"
       },
       "class":{
          "type":"String"
@@ -371,12 +473,18 @@ tag_dict = {
       "horizontalAlign":{
          "type":"String"
       },
+      "title":{
+         "type":"String"
+      },
       "multipleRows":{
          "type":"Boolean"
       }
    },
    "lightning:layoutItem":{
       "class":{
+         "type":"String"
+      },
+      "title":{
          "type":"String"
       },
       "smallDeviceSize":{
@@ -887,6 +995,123 @@ tag_dict = {
          "required": True
       }
    },
+   "lightning:tile":{
+      "class":{
+         "type":"String"
+      },
+      "href":{
+         "type":"String"
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      },
+      "media":{
+         "type":"Component[]"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:tree":{
+      "class":{
+         "type":"String"
+      },
+      "items":{
+         "type":"Object"
+      },
+      "label":{
+         "type":"String"
+      },
+      "header":{
+         "type":"String"
+      },
+      "onselect":{
+         "type":"Action"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:pill":{
+      "class":{
+         "type":"String"
+      },
+      "href":{
+         "type":"String"
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      },
+      "name":{
+         "type":"String"
+      },
+      "onclick":{
+         "type":"Action"
+      },
+      "onremove":{
+         "type":"Action"
+      },
+      "media":{
+         "type":"Component[]"
+      },
+      "hasError":{
+         "type":"Boolean"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:pillContainer":{
+      "class":{
+         "type":"String"
+      },
+      "items":{
+         "type":"List"
+      },
+      "label":{
+         "type":"String"
+      },
+      "onitemremove":{
+         "type":"Action"
+      },
+      "singleLine":{
+         "type":"Boolean"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:breadcrumb":{
+      "class":{
+         "type":"String"
+      },
+      "href":{
+         "type":"String"
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      },
+      "name":{
+         "type":"String"
+      },
+      "onclick":{
+         "type":"Action"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:breadcrumbs":{
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
    "ui:inputTextArea":{
       "class":{
          "type":"String"
@@ -1121,10 +1346,13 @@ tag_dict = {
    },
    "force:inputField":{
       "change":{
-         "type":"Component"
+         "type":"COMPONENT"
       },
       "class":{
          "type":"String"
+      },
+      "errorComponent":{
+         "type":"COMPONENT[]"
       },
       "value":{
          "type":"Object"
@@ -1641,6 +1869,9 @@ tag_dict = {
          "type":"String",
          "required": True
       },
+      "iconClass":{
+         "type":"String"
+      },
       "accesskey":{
          "type":"String"
       },
@@ -1653,6 +1884,12 @@ tag_dict = {
       "tabindex":{
          "type":"Integer"
       },
+      "title":{
+         "type":"String"
+      },
+      "type":{
+         "type":"String"
+      },
       "onfocus":{
          "type":"Action"
       },
@@ -1660,6 +1897,110 @@ tag_dict = {
          "type":"String"
       },
       "disabled":{
+         "type":"Boolean"
+      },
+      "onclick":{
+         "type":"Action"
+      }
+   },
+   "lightning:buttonIconStateful":{
+      "class":{
+         "type":"String"
+      },
+      "alternativeText":{
+         "type":"String",
+         "required": True
+      },
+      "value":{
+         "type":"String"
+      },
+      "size":{
+         "type":"String"
+      },
+      "iconName":{
+         "type":"String",
+         "required": True
+      },
+      "iconClass":{
+         "type":"String"
+      },
+      "accesskey":{
+         "type":"String"
+      },
+      "name":{
+         "type":"String"
+      },
+      "onblur":{
+         "type":"Action"
+      },
+      "tabindex":{
+         "type":"Integer"
+      },
+      "selected":{
+         "type":"Boolean"
+      },
+      "title":{
+         "type":"String"
+      },
+      "type":{
+         "type":"String"
+      },
+      "onfocus":{
+         "type":"Action"
+      },
+      "variant":{
+         "type":"String"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "onclick":{
+         "type":"Action"
+      }
+   },
+   "lightning:buttonStateful":{
+      "class":{
+         "type":"String"
+      },
+      "labelWhenOff":{
+         "type":"String",
+         "required": True
+      },
+      "labelWhenOn":{
+         "type":"String",
+         "required": True
+      },
+      "iconNameWhenOff":{
+         "type":"String"
+      },
+      "iconNameWhenOn":{
+         "type":"String"
+      },
+      "labelWhenHover":{
+         "type":"String"
+      },
+      "iconNameWhenHover":{
+         "type":"String",
+      },
+      "accesskey":{
+         "type":"String"
+      },
+      "onblur":{
+         "type":"Action"
+      },
+      "tabindex":{
+         "type":"Integer"
+      },
+      "title":{
+         "type":"String"
+      },
+      "onfocus":{
+         "type":"Action"
+      },
+      "variant":{
+         "type":"String"
+      },
+      "state":{
          "type":"Boolean"
       },
       "onclick":{
@@ -1872,6 +2213,67 @@ tag_dict = {
          "type":"Action"
       }
    },
+   "lightning:radioGroup":{
+      "class":{
+         "type":"String"
+      },
+      "accesskey":{
+         "type":"String"
+      },
+      "onchange":{
+         "type":"Action"
+      },
+      "validity":{
+         "type":"Object"
+      },
+      "required":{
+         "type":"Boolean"
+      },
+      "accesskey":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "type":{
+         "type":"String"
+      },
+      "name":{
+         "type":"String",
+         "required": True
+      },
+      "options":{
+         "type":"List"
+      },
+      "value":{
+         "type":"Object"
+      },
+      "validity":{
+         "type":"Object"
+      },
+      "tabindex":{
+         "type":"Integer"
+      },
+      "onfocus":{
+         "type":"Action"
+      },
+      "messageWhenValueMissing":{
+         "type":"String"
+      },
+      "readonly":{
+         "type":"Boolean"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      },
+      "onblur":{
+         "type":"Action"
+      }
+   },
    "lightning:card":{
       "class":{
          "type":"String"
@@ -1890,6 +2292,52 @@ tag_dict = {
          "type":"Component[]"
       },
       "variant":{
+         "type":"String"
+      }
+   },
+   "lightning:carousel":{
+      "class":{
+         "type":"String"
+      },
+      "disableAutoRefresh":{
+         "type":"Boolean"
+      },
+      "disableAutoScroll":{
+         "type":"Boolean"
+      },
+      "scrollDuration":{
+         "type":"Integer"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "aura:template":{
+      "auraPreInitBlock":{
+         "type":"Component[]"
+      },
+      "body":{
+         "type":"Component[]",
+      },
+      "bodyClass":{
+         "type":"String"
+      },
+      "defaultBodyClass":{
+         "type":"String"
+      },
+      "doctype":{
+         "type":"String"
+      },
+      "errorMessage":{
+         "type":"String"
+      },
+      "errorTitle":{
+         "type":"String"
+      },
+      "loadingText":{
+         "type":"String"
+      },
+      "title":{
          "type":"String"
       }
    },
@@ -2127,6 +2575,186 @@ tag_dict = {
    "lightning:buttonGroup":{
       "class":{
          "type":"String"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:container":{
+      "alternativeText":{
+         "type":"String"
+      },
+      "class":{
+         "type":"String"
+      },
+      "onerror":{
+         "type":"Action"
+      },
+      "onmessage":{
+         "type":"Action"
+      },
+      "src":{
+         "type":"String",
+         "required": True
+      }
+   },
+   "lightning:treeGrid":{
+      "class":{
+         "type":"String"
+      },
+      "columns":{
+         "type":"List"
+      },
+      "expandedRows":{
+         "type":"List"
+      },
+      "data":{
+         "type":"Object"
+      },
+      "hideCheckboxColumn":{
+         "type":"Boolean"
+      },
+      "isLoading":{
+         "type":"Boolean"
+      },
+      "keyField":{
+         "type":"String"
+      },
+      "maxColumnWidth":{
+         "type":"Integer"
+      },
+      "minColumnWidth":{
+         "type":"Integer"
+      },
+      "onresize":{
+         "type":"Action"
+      },
+      "onrowaction":{
+         "type":"Action"
+      },
+      "onrowselection":{
+         "type":"Action"
+      },
+      "ontoggle":{
+         "type":"Action"
+      },
+      "ontoggleall":{
+         "type":"Action"
+      },
+      "resizeColumnDisabled":{
+         "type":"Boolean"
+      },
+      "rowNumberOffset":{
+         "type":"Integer"
+      },
+      "selectedRows":{
+         "type":"List"
+      },
+      "showRowNumberColumn":{
+         "type":"Boolean"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:checkboxGroup":{
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "name":{
+         "type":"String",
+         "required": True
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      },
+      "options":{
+         "type":"List",
+         "required": True
+      },
+      "value":{
+         "type":"String[]",
+         "required": True
+      },
+      "messageWhenValueMissing":{
+         "type":"String"
+      },
+      "required":{
+         "type":"Boolean"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "onblur":{
+         "type":"Action"
+      },
+      "onchange":{
+         "type":"Action"
+      },
+      "onfocus":{
+         "type":"Action"
+      }
+   },
+   "lightning:combobox":{
+      "name":{
+         "type":"String"
+      },
+      "value":{
+         "type":"Object"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "readonly":{
+         "type":"Boolean"
+      },
+      "required":{
+         "type":"Boolean"
+      },
+      "validity":{
+         "type":"Object"
+      },
+      "onchange":{
+         "type":"Action"
+      },
+      "accesskey":{
+         "type":"String"
+      },
+      "tabindex":{
+         "type":"Integer"
+      },
+      "onfocus":{
+         "type":"Action"
+      },
+      "onblur":{
+         "type":"Action"
+      },
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "options":{
+         "type":"Object[]",
+         "required": True
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      },
+      "placeholder":{
+         "type":"String"
+      },
+      "dropdownAlignment":{
+         "type":"String"
+      },
+      "messageWhenValueMissing":{
+         "type":"String"
       }
    },
    "ui:outputNumber":{
@@ -2205,6 +2833,85 @@ tag_dict = {
       },
       "recordId":{
          "type":"String"
+      }
+   },
+   "forceCommunity:navigationMenuBase":{
+      "menuItems":{
+         "type":"Object"
+      }
+   },
+   "forceCommunity:notifications":{
+      "body":{
+         "type":"Component[]"
+      }
+   },
+   "lightning:utilityBarAPI":{
+      "body":{
+         "type":"Component[]"
+      }
+   },
+   "forceCommunity:routeLink":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "id":{
+         "type":"String"
+      },
+      "label":{
+         "type":"String"
+      },
+      "onClick":{
+         "type":"Action"
+      },
+      "routeInput":{
+         "type":"HashMap"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "forceCommunity:waveDashboard":{
+      "accessToken":{
+         "type":"String"
+      },
+      "body":{
+         "type":"Component[]"
+      },
+      "dashboardId":{
+         "type":"String"
+      },
+      "developerName":{
+         "type":"String"
+      },
+      "filter":{
+         "type":"String"
+      },
+      "height":{
+         "type":"Integer"
+      },
+      "hideOnerror":{
+         "type":"Boolean"
+      },
+      "title":{
+         "type":"String"
+      },
+      "openLinksInNewWindow":{
+         "type":"Boolean"
+      },
+      "recordId":{
+         "type":"String"
+      },
+      "showHeader":{
+         "type":"Boolean"
+      },
+      "showSharing":{
+         "type":"Boolean"
+      },
+      "showTitle":{
+         "type":"Boolean"
       }
    },
    "ui:inputURL":{
@@ -2313,6 +3020,17 @@ tag_dict = {
          "type":"Object"
       },
       "name":{
+         "type":"String"
+      }
+   },
+   "lightning:relativeDateTime":{
+      "class":{
+         "type":"String"
+      },
+      "value":{
+         "type":"Object"
+      },
+      "title":{
          "type":"String"
       }
    },
@@ -2454,6 +3172,848 @@ tag_dict = {
          "type":"String"
       }
    },
+   "lightning:accordion":{
+      "activeSectionName":{
+         "type":"String"
+      },
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:accordionSection":{
+      "actions":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "label":{
+         "type":"String"
+      },
+      "name":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:avatar":{
+      "alternativeText":{
+         "type":"String",
+         "required": True
+      },
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "fallbackIconName":{
+         "type":"String"
+      },
+      "initials":{
+         "type":"String"
+      },
+      "size":{
+         "type":"String"
+      },
+      "src":{
+         "type":"String",
+         "required": True
+      },
+      "title":{
+         "type":"String"
+      },
+      "variant":{
+         "type":"String"
+      }
+   },
+   "lightning:flow":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "onstatuschange":{
+         "type":"Action"
+      }
+   },
+   "lightning:formattedEmail":{
+      "body":{
+         "type":"Component[]"
+      },
+      "value":{
+         "type":"String"
+      },
+      "label":{
+         "type":"String"
+      },
+      "onclick":{
+         "type":"Action"
+      }
+   },
+   "lightning:formattedLocation":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "latitude":{
+         "type":"Decimal",
+         "required": True
+      },
+      "longitude":{
+         "type":"Decimal",
+         "required": True
+      }
+   },
+   "lightning:inputLocation":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "latitude":{
+         "type":"String"
+      },
+      "longitude":{
+         "type":"String"
+      },
+      "required":{
+         "type":"Boolean"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "readonly":{
+         "type":"Boolean"
+      },
+      "variant":{
+         "type":"String"
+      },
+      "label":{
+         "type":"String"
+      },
+      "onblur":{
+         "type":"Action"
+      },
+      "onchange":{
+         "type":"Action"
+      },
+      "onfocus":{
+         "type":"Action"
+      }
+   },
+   "lightning:formattedName":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "firstName":{
+         "type":"String"
+      },
+      "format":{
+         "type":"String"
+      },
+      "informalName":{
+         "type":"String"
+      },
+      "lastName":{
+         "type":"String"
+      },
+      "middleName":{
+         "type":"String"
+      },
+      "salutation":{
+         "type":"String"
+      },
+      "suffix":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:inputName":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "required":{
+         "type":"Boolean"
+      },
+      "readonly":{
+         "type":"Boolean"
+      },
+      "firstName":{
+         "type":"String"
+      },
+      "fieldsToDisplay":{
+         "type":"List"
+      },
+      "informalName":{
+         "type":"String"
+      },
+      "lastName":{
+         "type":"String"
+      },
+      "middleName":{
+         "type":"String"
+      },
+      "options":{
+         "type":"List"
+      },
+      "onblur":{
+         "type":"Action"
+      },
+      "onfocus":{
+         "type":"Action"
+      },
+      "onchange":{
+         "type":"Action"
+      },
+      "salutation":{
+         "type":"String"
+      },
+      "suffix":{
+         "type":"String"
+      },
+      "label":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:formattedPhone":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "value":{
+         "type":"String"
+      },
+      "onclick":{
+         "type":"Action"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:formattedRichText":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "value":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:verticalNavigation":{
+      "body":{
+         "type":"Component[]"
+      },
+      "ariaLabel":{
+         "type":"String"
+      },
+      "class":{
+         "type":"String"
+      },
+      "compact":{
+         "type":"Boolean"
+      },
+      "onbeforeselect":{
+         "type":"Action"
+      },
+      "onselect":{
+         "type":"Action"
+      },
+      "selectedItem":{
+         "type":"String"
+      },
+      "shaded":{
+         "type":"Boolean"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:workspaceAPI":{
+      "body":{
+         "type":"Component[]"
+      }
+   },
+   "lightning:verticalNavigationOverflow":{
+      "body":{
+         "type":"Component[]"
+      }
+   },
+   "lightning:verticalNavigationSection":{
+      "body":{
+         "type":"Component[]"
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      }
+   },
+   "lightning:verticalNavigationItem":{
+      "body":{
+         "type":"Component[]"
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      },
+      "class":{
+         "type":"String"
+      },
+      "name":{
+         "type":"String",
+         "required": True
+      },
+      "href":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:verticalNavigationItemIcon":{
+      "body":{
+         "type":"Component[]"
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      },
+      "class":{
+         "type":"String"
+      },
+      "name":{
+         "type":"String",
+         "required": True
+      },
+      "href":{
+         "type":"String"
+      },
+      "iconName":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:verticalNavigationItemBadge":{
+      "body":{
+         "type":"Component[]"
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      },
+      "class":{
+         "type":"String"
+      },
+      "name":{
+         "type":"String",
+         "required": True
+      },
+      "href":{
+         "type":"String"
+      },
+      "badgeCount":{
+         "type":"Integer"
+      },
+      "assistiveText":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:inputRichText":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "variant":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "ariaLabel":{
+         "type":"String"
+      },
+      "ariaLabelledby":{
+         "type":"String"
+      },
+      "ariaDescribedby":{
+         "type":"String"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "value":{
+         "type":"Boolean"
+      },
+      "disabledCategories":{
+         "type":"List"
+      },
+      "messageWhenBadInput":{
+         "type":"String"
+      },
+      "onblur":{
+         "type":"Action"
+      },
+      "onfocus":{
+         "type":"Action"
+      },
+      "placeholder":{
+         "type":"String"
+      },
+      "tabindex":{
+         "type":"Integer"
+      }
+   },
+   "lightning:helptext":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "content":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "iconName":{
+         "type":"String"
+      }
+   },
+   "lightning:formattedUrl":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "value":{
+         "type":"String"
+      },
+      "target":{
+         "type":"String"
+      },
+      "label":{
+         "type":"String"
+      },
+      "tooltip":{
+         "type":"String"
+      },
+      "onclick":{
+         "type":"Action"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:formattedTime":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "value":{
+         "type":"Integer"
+      },
+      "title":{
+         "type":"String"
+      }
+   },
+   "lightning:formattedText":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "value":{
+         "type":"Integer"
+      },
+      "title":{
+         "type":"String"
+      },
+      "linkify":{
+         "type":"Boolean"
+      }
+   },
+   "lightning:formattedAddress":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "country":{
+         "type":"String"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "longitude":{
+         "type":"Decimal"
+      },
+      "latitude":{
+         "type":"Decimal"
+      },
+      "postalCode":{
+         "type":"String"
+      },
+      "province":{
+         "type":"String"
+      },
+      "street":{
+         "type":"String"
+      },
+      "city":{
+         "type":"String"
+      }
+   },
+   "lightning:inputAddress":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "country":{
+         "type":"String"
+      },
+      "countryLabel":{
+         "type":"String"
+      },
+      "countryOptions":{
+         "type":"List"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "readonly":{
+         "type":"Boolean"
+      },
+      "required":{
+         "type":"Boolean"
+      },
+      "longitude":{
+         "type":"Decimal"
+      },
+      "latitude":{
+         "type":"Decimal"
+      },
+      "postalCode":{
+         "type":"String"
+      },
+      "postalCodeLbael":{
+         "type":"String"
+      },
+      "province":{
+         "type":"String"
+      },
+      "provinceLabel":{
+         "type":"String"
+      },
+      "provinceOptions":{
+         "type":"List"
+      },
+      "street":{
+         "type":"String"
+      },
+      "streetLabel":{
+         "type":"String"
+      },
+      "onblur":{
+         "type":"Action"
+      },
+      "onchange":{
+         "type":"Action"
+      },
+      "onfocus":{
+         "type":"Action"
+      },
+      "city":{
+         "type":"String"
+      },
+      "cityLabel":{
+         "type":"String"
+      },
+      "variant":{
+         "type":"String"
+      }
+   },
+   "lightning:dynamicIcon":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "option":{
+         "type":"String"
+      },
+      "type":{
+         "type":"String",
+         "required": True
+      },
+      "title":{
+         "type":"String"
+      },
+      "alternativeText":{
+         "type":"String"
+      },
+      "onclick":{
+         "type":"Action"
+      }
+   },
+   "lightning:flexipageRegionInfo":{
+      "body":{
+         "type":"Component[]"
+      },
+      "width":{
+         "type":"String"
+      }
+   },
+   "lightning:fileCard":{
+      "body":{
+         "type":"Component[]"
+      },
+      "fieldId":{
+         "type":"String"
+      }
+   },
+   "lightning:fileUpload":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      },
+      "recordId":{
+         "type":"String",
+         "required": True
+      },
+      "multiple":{
+         "type":"Boolean"
+      },
+      "name":{
+         "type":"String"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "accept":{
+         "type":"List"
+      },
+      "onuploadfinished":{
+         "type":"Action"
+      }
+   },
+   "lightning:slider":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "value":{
+         "type":"Integer"
+      },
+      "variant":{
+         "type":"String"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "readonly":{
+         "type":"Boolean"
+      },
+      "required":{
+         "type":"Boolean"
+      },
+      "variant":{
+         "type":"String"
+      },
+      "onchange":{
+         "type":"String"
+      },
+      "step":{
+         "type":"String"
+      },
+      "size":{
+         "type":"String"
+      },
+      "type":{
+         "type":"String"
+      },
+      "onfocus":{
+         "type":"Action"
+      },
+      "onblur":{
+         "type":"Action"
+      },
+      "label":{
+         "type":"String"
+      },
+      "title":{
+         "type":"String"
+      },
+      "messageWhenBadInput":{
+         "type":"String"
+      },
+      "messageWhenPatternMismatch":{
+         "type":"String"
+      },
+      "messageWhenTypeMismatch":{
+         "type":"String"
+      },
+      "messageWhenValueMissing":{
+         "type":"String"
+      },
+      "messageWhenRangeOverflow":{
+         "type":"String"
+      },
+      "messageWhenRangeUnderflow":{
+         "type":"String"
+      },
+      "messageWhenStepMismatch":{
+         "type":"String"
+      },
+      "messageWhenTooLong":{
+         "type":"String"
+      },
+      "min":{
+         "type":"Integer"
+      },
+      "max":{
+         "type":"Integer"
+      }
+   },
+   "lightning:dualListbox":{
+      "body":{
+         "type":"Component[]"
+      },
+      "class":{
+         "type":"String"
+      },
+      "value":{
+         "type":"Object"
+      },
+      "variant":{
+         "type":"String"
+      },
+      "disabled":{
+         "type":"Boolean"
+      },
+      "readonly":{
+         "type":"Boolean"
+      },
+      "required":{
+         "type":"Boolean"
+      },
+      "validity":{
+         "type":"Object"
+      },
+      "onchange":{
+         "type":"Action"
+      },
+      "accesskey":{
+         "type":"String"
+      },
+      "tabindex":{
+         "type":"Integer"
+      },
+      "onfocus":{
+         "type":"Action"
+      },
+      "onblur":{
+         "type":"Action"
+      },
+      "label":{
+         "type":"String",
+         "required": True
+      },
+      "sourceLabel":{
+         "type":"String",
+         "required": True
+      },
+      "selectedLabel":{
+         "type":"String",
+         "required": True
+      },
+      "options":{
+         "type":"Object[]",
+         "required": True
+      },
+      "requiredOptions":{
+         "type":"List"
+      },
+      "values":{
+         "type":"List"
+      },
+      "min":{
+         "type":"Integer"
+      },
+      "max":{
+         "type":"Integer"
+      }
+   },
    "ui:outputRichText":{
       "mousedown":{
          "type":"COMPONENT"
@@ -2491,6 +4051,9 @@ tag_dict = {
          "type":"String"
       },
       "class":{
+         "type":"String"
+      },
+      "title":{
          "type":"String"
       },
       "size":{
@@ -2882,6 +4445,9 @@ tag_dict = {
       }
    },
    "lightning:button":{
+      "accesskey":{
+         "type":"String"
+      },
       "iconPosition":{
          "type":"String"
       },
@@ -3029,11 +4595,14 @@ tag_dict = {
       "class":{
          "type":"String"
       },
+      "variant":{
+         "type":"String"
+      },
       "onchange":{
          "type":"Action"
       },
       "value":{
-         "type":"Object"
+         "type":"String"
       },
       "required":{
          "type":"Boolean"
@@ -3053,6 +4622,9 @@ tag_dict = {
       },
       "validity":{
          "type":"Object"
+      },
+      "title":{
+         "type":"String"
       },
       "placeholder":{
          "type":"String"
@@ -3206,6 +4778,116 @@ tag_dict = {
       },
       "type":{
          "type":"String"
+      }
+   },
+   "lightning:recordViewForm":{
+      "class":{
+         "type":"String"
+      },
+      "recordId":{
+         "type":"String",
+         "required": True
+      },
+      "objectApiName":{
+         "type":"String",
+         "required": True
+      }
+   },
+   "lightning:listView":{
+      "enableInlineEdit":{
+         "type":"Boolean"
+      },
+      "listName":{
+         "type":"String"
+      },
+      "listName":{
+         "type":"String",
+         "required": True
+      },
+      "objectApiName":{
+         "type":"String",
+         "required": True
+      },
+      "rows":{
+         "type":"Integer"
+      },
+      "showActionBar":{
+         "type":"Boolean"
+      },
+      "showRowLevelActions":{
+         "type":"Boolean"
+      }
+   },
+   "lightning:recordEditForm":{
+      "class":{
+         "type":"String"
+      },
+      "objectApiName":{
+         "type":"String",
+         "required": True
+      },
+      "onerror":{
+         "type":"Action"
+      },
+      "onload":{
+         "type":"Action"
+      },
+      "onsubmit":{
+         "type":"Action"
+      },
+      "onsuccess":{
+         "type":"Action"
+      },
+      "recordId":{
+         "type":"String"
+      },
+      "recordTypeId":{
+         "type":"String"
+      },
+   },
+   "lightning:clickToDial":{
+      "class":{
+         "type":"String"
+      },
+      "value":{
+         "type":"String",
+         "required": True
+      },
+      "title":{
+         "type":"String"
+      },
+      "recordId":{
+         "type":"String"
+      },
+      "prams":{
+         "type":"String"
+      },
+   },
+   "force:recordData":{
+      "fields":{
+         "type":"String[]"
+      },
+      "layoutType":{
+         "type":"String"
+      },
+      "targetRecord":{
+         "type":"Object"
+      },
+      "targetRecord":{
+         "type":"Object"
+      },
+      "recordId":{
+         "type":"String",
+         "required": True
+      },
+      "targetError":{
+         "type":"String"
+      },
+      "mode":{
+         "type":"String"
+      },
+      "recordUpdated":{
+         "type":"COMPONENT"
       }
    }
 }

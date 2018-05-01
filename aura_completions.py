@@ -19,8 +19,12 @@ def make_completion(tag, attributes):
         '{}="${{{}:{}}}"'.format(attribute, next(i), traits.get("type")) 
         for (attribute, traits) in attributes.items() 
         if traits.get('required', False) == True];
-
-    return (tag + '\tTag', tag +' ' + ' '.join(required_attributes)+ ' ${} >${}</'.format(next(i), next(i)) + tag + '>')
+    
+    if not required_attributes:
+        return (tag + '\tTag', tag + ' ${}>${}</'.format(next(i), next(i)) + tag + '>')
+    else: 
+        return (tag + '\tTag', tag +' ' + ' '.join(required_attributes)+ '${}>${}</'.format(next(i), next(i)) + tag + '>')
+    
 
 class LightningComponentsCompletions(sublime_plugin.EventListener):
 
